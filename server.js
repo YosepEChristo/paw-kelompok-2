@@ -51,8 +51,8 @@ app.delete('/queue', (req,res)=>{
 
 //GET patient
 app.get('/patient',async(req,res)=>{
-    const pasientItems = await Patients.find();
-    res.send(pasientItems);
+    const patientItems = await Patients.find();
+    res.send(patientItems);
 });
 
 // POST Patients
