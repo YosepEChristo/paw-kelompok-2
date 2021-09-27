@@ -24,6 +24,7 @@ app.get('/queue',async(req,res)=>{
     res.send(queueItems);
 });
 
+
 //PUT queue
 app.put('/queue', (req,res)=>{
     console.log(req.body._id)
@@ -36,6 +37,23 @@ app.put('/queue', (req,res)=>{
             res.send(err)
         })
 })
+
+//DELETE queue
+app.delete('/queue', (req,res)=>{
+    console.log(req.body.ownerName)
+    Queue.findOneAndDelete({ownerName:req.body.ownerName})
+        .then(res.send("Delete successful"))
+        .catch(err=>{
+            res.send(err)
+        })
+})
+
+
+//GET patient
+app.get('/patient',async(req,res)=>{
+    const pasientItems = await Patients.find();
+    res.send(pasientItems);
+});
 
 // POST Patients
 app.post('/patients', (req,res)=>{
