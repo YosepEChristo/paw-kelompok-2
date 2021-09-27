@@ -25,12 +25,16 @@ app.get('/queue',async(req,res)=>{
 });
 
 //PUT queue
-app.put('/patients', (req,res)=>{
+app.put('/queue', (req,res)=>{
     console.log(req.body._id)
     updates = req.body
-    Patients.findOneAndUpdate({_id:req.body._id}, updates, {new : true})
-        .then(updatedPatients=>{res.send(updatedPatients)})
-        .catch(err=>{res.send(err)})
+    Queue.findOneAndUpdate({_id:req.body._id}, updates, {new : true})
+        .then(updatedPatients=>{
+            res.send(updatedPatients)
+        })
+        .catch(err=>{
+            res.send(err)
+        })
 })
 
 // POST Patients
