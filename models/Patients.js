@@ -8,7 +8,9 @@ const patients = new Schema({
     homeAddress: String,
     phoneNumber: String,
     description: String,
-    currentTreatment: String
+    currentTreatments: Array
+},{
+    collection : 'patients'
 });
 
 module.exports = mongoose.model('Patients',patients);

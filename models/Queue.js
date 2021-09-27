@@ -9,6 +9,8 @@ const queueItems = new Schema({
     petType: String,
     homeAddress: String,
     phoneNumber: String
+},{
+    collection : 'queues'
 });
 
 module.exports = mongoose.model('Queue',queueItems);
