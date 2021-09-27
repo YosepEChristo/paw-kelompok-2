@@ -66,3 +66,17 @@ app.post('/patients', (req,res)=>{
             res.send(err)
         });
 })
+
+// PUT Patients
+
+
+
+// DELETE Patients
+app.delete('/patients', (req, res) => {
+    const patientItems = await Patients.findOne({ ownerName: req.body.ownerName })
+    const deleted = await patientItems.remove()
+    .then(res.send("Delete successful"))
+    .catch(err=>{
+        res.send(err)
+    })
+})
