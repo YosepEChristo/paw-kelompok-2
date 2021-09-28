@@ -24,6 +24,15 @@ app.get('/queue',async(req,res)=>{
     res.send(queueItems);
 });
 
+//POST queue
+app.post('/queue',async(req,res)=>{
+    var newQueue = new Queue(req.body)
+    newQueue.save()
+    .then(_id=>{
+        res.send(_id)
+    })
+});
+
 
 //PUT queue
 app.put('/queue', (req,res)=>{
@@ -68,6 +77,14 @@ app.post('/patients', (req,res)=>{
 })
 
 // PUT Patients
+app.put('/patients',async(req,res)=>{
+    const patientItems = await Patients.findOne({ownerName: req.body.ownerName})
+    const update = await patientItems.update()
+    .then(res.send("Update successful"))
+    .catch(err=>{
+        res.send(err)
+    })
+});
 
 
 
